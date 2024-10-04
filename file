@@ -1,0 +1,42 @@
+Python 3.2.5 (default, May 15 2013, 23:06:03) [MSC v.1500 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> # File handling assignment
+
+# File creation and writing to "my_file.txt"
+try:
+    # Step 1: Create and open the file in write mode
+    with open("my_file.txt", 'w') as file:
+        # Write three lines of text (strings and numbers)
+        file.write("This is the first line.\n")
+        file.write("Here is a number: 42\n")
+        file.write("Final line in the initial write.\n")
+    print("File created and written to successfully.")
+    
+    # Step 2: Read the contents of the file and display on the console
+    with open("my_file.txt", 'r') as file:
+        content = file.read()
+        print("\n--- Contents of 'my_file.txt' after first write ---")
+        print(content)
+    
+    # Step 3: Open the file in append mode and append three additional lines
+    with open("my_file.txt", 'a') as file:
+        file.write("Appending a new line.\n")
+        file.write("Appending another number: 100\n")
+        file.write("This is the last appended line.\n")
+    print("\nLines appended successfully.")
+    
+    # Step 4: Read the file again and display the updated contents
+    with open("my_file.txt", 'r') as file:
+        content = file.read()
+        print("\n--- Contents of 'my_file.txt' after appending ---")
+        print(content)
+
+# Error handling using try-except-finally
+except FileNotFoundError:
+    print("Error: The file was not found.")
+except PermissionError:
+    print("Error: You don't have permission to access the file.")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+finally:
+    print("\nFile operations completed.")
